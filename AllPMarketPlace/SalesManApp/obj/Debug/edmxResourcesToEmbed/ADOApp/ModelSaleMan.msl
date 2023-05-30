@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище DeliviModelContainer" CdmEntityContainer="DeliviEntities">
+    <EntitySetMapping Name="Answer">
+      <EntityTypeMapping TypeName="DeliviModel.Answer">
+        <MappingFragment StoreEntitySet="Answer">
+          <ScalarProperty Name="id_Answer" ColumnName="id_Answer" />
+          <ScalarProperty Name="Appeal_id" ColumnName="Appeal_id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Appeal">
+      <EntityTypeMapping TypeName="DeliviModel.Appeal">
+        <MappingFragment StoreEntitySet="Appeal">
+          <ScalarProperty Name="id_Appeal" ColumnName="id_Appeal" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="TypeAppeal_id" ColumnName="TypeAppeal_id" />
+          <ScalarProperty Name="DataCreate" ColumnName="DataCreate" />
+          <ScalarProperty Name="DateClose" ColumnName="DateClose" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Balances">
+      <EntityTypeMapping TypeName="DeliviModel.Balances">
+        <MappingFragment StoreEntitySet="Balances">
+          <ScalarProperty Name="id_balance" ColumnName="id_balance" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="BunusCard" ColumnName="BunusCard" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BonusBalance">
+      <EntityTypeMapping TypeName="DeliviModel.BonusBalance">
+        <MappingFragment StoreEntitySet="BonusBalance">
+          <ScalarProperty Name="id_BB" ColumnName="id_BB" />
+          <ScalarProperty Name="Balance_id" ColumnName="Balance_id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="DeliviModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="id_category" ColumnName="id_category" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdersProduct">
+      <EntityTypeMapping TypeName="DeliviModel.OrdersProduct">
+        <MappingFragment StoreEntitySet="OrdersProduct">
+          <ScalarProperty Name="id_OP" ColumnName="id_OP" />
+          <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+          <ScalarProperty Name="Orders_id" ColumnName="Orders_id" />
+          <ScalarProperty Name="StatusOP_id" ColumnName="StatusOP_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ordsers">
+      <EntityTypeMapping TypeName="DeliviModel.Ordsers">
+        <MappingFragment StoreEntitySet="Ordsers">
+          <ScalarProperty Name="Id_Order" ColumnName="Id_Order" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+          <ScalarProperty Name="DateClose" ColumnName="DateClose" />
+          <ScalarProperty Name="StatusOrder_id" ColumnName="StatusOrder_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductMakers">
+      <EntityTypeMapping TypeName="DeliviModel.ProductMakers">
+        <MappingFragment StoreEntitySet="ProductMakers">
+          <ScalarProperty Name="id_ProductMakers" ColumnName="id_ProductMakers" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Info" ColumnName="Info" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="TMe" ColumnName="TMe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="DeliviModel.Products">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Id_prod" ColumnName="Id_prod" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProductMaket_id" ColumnName="ProductMaket_id" />
+          <ScalarProperty Name="IsBlock" ColumnName="IsBlock" />
+          <ScalarProperty Name="Category_id" ColumnName="Category_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="DeliviModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="id_Role" ColumnName="id_Role" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SplashText">
+      <EntityTypeMapping TypeName="DeliviModel.SplashText">
+        <MappingFragment StoreEntitySet="SplashText">
+          <ScalarProperty Name="Id_Splah" ColumnName="Id_Splah" />
+          <ScalarProperty Name="text" ColumnName="text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatusOP">
+      <EntityTypeMapping TypeName="DeliviModel.StatusOP">
+        <MappingFragment StoreEntitySet="StatusOP">
+          <ScalarProperty Name="id_op" ColumnName="id_op" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatusOrder">
+      <EntityTypeMapping TypeName="DeliviModel.StatusOrder">
+        <MappingFragment StoreEntitySet="StatusOrder">
+          <ScalarProperty Name="id_statusOrder" ColumnName="id_statusOrder" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeAppeal">
+      <EntityTypeMapping TypeName="DeliviModel.TypeAppeal">
+        <MappingFragment StoreEntitySet="TypeAppeal">
+          <ScalarProperty Name="id_TypeAppeal" ColumnName="id_TypeAppeal" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DeliviModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="id_User" ColumnName="id_User" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PhotoUser" ColumnName="PhotoUser" />
+          <ScalarProperty Name="DateRegist" ColumnName="DateRegist" />
+          <ScalarProperty Name="BirthData" ColumnName="BirthData" />
+          <ScalarProperty Name="Role_id" ColumnName="Role_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersPM">
+      <EntityTypeMapping TypeName="DeliviModel.UsersPM">
+        <MappingFragment StoreEntitySet="UsersPM">
+          <ScalarProperty Name="id_userPM" ColumnName="id_userPM" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="ProductMaker_id" ColumnName="ProductMaker_id" />
+          <ScalarProperty Name="IsBlock" ColumnName="IsBlock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

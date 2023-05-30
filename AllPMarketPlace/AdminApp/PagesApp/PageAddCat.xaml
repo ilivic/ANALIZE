@@ -1,0 +1,22 @@
+﻿<Page x:Class="AdminApp.PagesApp.PageAddCat"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AdminApp.PagesApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageAddCat">
+
+    <Grid>
+        <StackPanel>
+            <TextBlock/>
+            <TextBox MaxLength="49" x:Name="TxtName"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="выбрать фото" VerticalAlignment="Center" Click="CLEventSelectPhoto"/>
+                <Image x:Name="ImgAdmin" Width="150" Height="150"/>
+            </StackPanel>
+            <Button Background="SkyBlue" Content="Добавить категорию" Click="ClEnetAddCat"/>
+        </StackPanel>  
+    </Grid>
+</Page>

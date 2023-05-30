@@ -1,0 +1,47 @@
+﻿<Page x:Class="SalesManApp.PagesApp.PageReg"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SalesManApp.PagesApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageReg">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+            <TextBlock Text="Имя"/>
+            <TextBox x:Name="TxtName"/>
+            <TextBlock Text="Телефон"/>
+            <TextBox x:Name="TxtPhone" Text="+7" MaxLength="12" TextChanged="TxtPhone_TextChanged"/>
+            <TextBlock Text="почта"/>
+            <TextBox x:Name="TxtEmail" TextChanged="TxtEmail_TextChanged"/>
+            <TextBlock Text="Логин"/>
+            <TextBox x:Name="TxtLogin"/>
+            <TextBlock Text="Пароль"/>
+            <TextBox x:Name="TxtPassword"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="выбрать фото" VerticalAlignment="Center" Click="Button_Click"/>
+                <Image x:Name="ImgAdmin" Width="150" Height="150"/>
+            </StackPanel>
+            <TextBlock Text="День рождения"/>
+            <DatePicker DisplayDateEnd="05-30-2009" x:Name="DateBirth"/>
+            <ComboBox x:Name="CMBProductMAker">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="Регистрация" Background="LightGreen" Padding="10" Click="Button_Click_2"/>
+                <Button Content="Авторизация" Background="Pink" Padding="10" Click="Button_Click_1"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

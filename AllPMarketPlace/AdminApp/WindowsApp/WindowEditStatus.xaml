@@ -1,0 +1,27 @@
+﻿<Window x:Class="AdminApp.WindowsApp.WindowEditStatus"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdminApp.WindowsApp"
+        mc:Ignorable="d"
+        Title="WindowEditStatus" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" WindowStyle="None" Height="100" Width="600">
+    <Grid>
+        <StackPanel>
+            <ListView x:Name="ListStatus" SelectionChanged="ListStatus_SelectionChanged">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="1"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Width="150">
+                            <Button Background="SkyBlue" IsEnabled="False" Padding="10" HorizontalAlignment="Center" Content="{Binding Title}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Window>

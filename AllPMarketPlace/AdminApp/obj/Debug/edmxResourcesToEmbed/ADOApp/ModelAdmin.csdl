@@ -1,0 +1,457 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DeliviModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="id_Answer" />
+    </Key>
+    <Property Name="id_Answer" Type="Int32" Nullable="false" />
+    <Property Name="Appeal_id" Type="Int32" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="User_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Appeal" Relationship="Self.FK_Answer_Appeal" FromRole="Answer" ToRole="Appeal" />
+    <NavigationProperty Name="Users" Relationship="DeliviModel.FK_Answer_Users" FromRole="Answer" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Appeal">
+    <Key>
+      <PropertyRef Name="id_Appeal" />
+    </Key>
+    <Property Name="id_Appeal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TypeAppeal_id" Type="Int32" Nullable="false" />
+    <Property Name="DataCreate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateClose" Type="DateTime" Precision="3" />
+    <Property Name="User_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Answer" Relationship="Self.FK_Answer_Appeal" FromRole="Appeal" ToRole="Answer" />
+    <NavigationProperty Name="TypeAppeal" Relationship="Self.FK_Appeal_TypeAppeal" FromRole="Appeal" ToRole="TypeAppeal" />
+    <NavigationProperty Name="Users" Relationship="DeliviModel.FK_Appeal_Users" FromRole="Appeal" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Balances">
+    <Key>
+      <PropertyRef Name="id_balance" />
+    </Key>
+    <Property Name="id_balance" Type="Int32" Nullable="false" />
+    <Property Name="User_id" Type="Int32" Nullable="false" />
+    <Property Name="Value" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="BunusCard" Type="Boolean" />
+    <NavigationProperty Name="BonusBalance" Relationship="Self.FK_BonusBalance_Balances" FromRole="Balances" ToRole="BonusBalance" />
+    <NavigationProperty Name="Users" Relationship="DeliviModel.FK_Balances_Users" FromRole="Balances" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="BonusBalance">
+    <Key>
+      <PropertyRef Name="id_BB" />
+    </Key>
+    <Property Name="id_BB" Type="Int32" Nullable="false" />
+    <Property Name="Balance_id" Type="Int32" Nullable="false" />
+    <Property Name="Value" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Balances" Relationship="Self.FK_BonusBalance_Balances" FromRole="BonusBalance" ToRole="Balances" />
+  </EntityType>
+  <EntityType Name="OrdersProduct">
+    <Key>
+      <PropertyRef Name="id_OP" />
+    </Key>
+    <Property Name="id_OP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product_id" Type="Int32" Nullable="false" />
+    <Property Name="Orders_id" Type="Int32" Nullable="false" />
+    <Property Name="StatusOP_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ordsers" Relationship="Self.FK_OrdersProduct_Ordsers" FromRole="OrdersProduct" ToRole="Ordsers" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_OrdersProduct_Products" FromRole="OrdersProduct" ToRole="Products" />
+    <NavigationProperty Name="StatusOP" Relationship="Self.FK_OrdersProduct_StatusOP" FromRole="OrdersProduct" ToRole="StatusOP" />
+  </EntityType>
+  <EntityType Name="Ordsers">
+    <Key>
+      <PropertyRef Name="Id_Order" />
+    </Key>
+    <Property Name="Id_Order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_id" Type="Int32" Nullable="false" />
+    <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateClose" Type="DateTime" Precision="3" />
+    <Property Name="StatusOrder_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OrdersProduct" Relationship="Self.FK_OrdersProduct_Ordsers" FromRole="Ordsers" ToRole="OrdersProduct" />
+    <NavigationProperty Name="StatusOrder" Relationship="Self.FK_Ordsers_StatusOrder" FromRole="Ordsers" ToRole="StatusOrder" />
+    <NavigationProperty Name="Users" Relationship="DeliviModel.FK_Ordsers_Users" FromRole="Ordsers" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id_prod" />
+    </Key>
+    <Property Name="Id_prod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ProductMaket_id" Type="Int32" Nullable="false" />
+    <Property Name="IsBlock" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="OrdersProduct" Relationship="Self.FK_OrdersProduct_Products" FromRole="Products" ToRole="OrdersProduct" />
+    <Property Name="Category_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="DeliviModel.FK_Products_Category" FromRole="Products" ToRole="Category" />
+    <NavigationProperty Name="ProductMakers" Relationship="DeliviModel.FK_Products_ProductMakers" FromRole="Products" ToRole="ProductMakers" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="id_Role" />
+    </Key>
+    <Property Name="id_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="DeliviModel.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="StatusOP">
+    <Key>
+      <PropertyRef Name="id_op" />
+    </Key>
+    <Property Name="id_op" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="OrdersProduct" Relationship="Self.FK_OrdersProduct_StatusOP" FromRole="StatusOP" ToRole="OrdersProduct" />
+  </EntityType>
+  <EntityType Name="StatusOrder">
+    <Key>
+      <PropertyRef Name="id_statusOrder" />
+    </Key>
+    <Property Name="id_statusOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Ordsers" Relationship="Self.FK_Ordsers_StatusOrder" FromRole="StatusOrder" ToRole="Ordsers" />
+  </EntityType>
+  <EntityType Name="TypeAppeal">
+    <Key>
+      <PropertyRef Name="id_TypeAppeal" />
+    </Key>
+    <Property Name="id_TypeAppeal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Appeal" Relationship="Self.FK_Appeal_TypeAppeal" FromRole="TypeAppeal" ToRole="Appeal" />
+  </EntityType>
+  <EntityType Name="UsersPM">
+    <Key>
+      <PropertyRef Name="id_userPM" />
+    </Key>
+    <Property Name="id_userPM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_id" Type="Int32" Nullable="false" />
+    <Property Name="ProductMaker_id" Type="Int32" Nullable="false" />
+    <Property Name="IsBlock" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="DeliviModel.FK_UsersPM_Users" FromRole="UsersPM" ToRole="Users" />
+    <NavigationProperty Name="ProductMakers" Relationship="DeliviModel.FK_UsersPM_ProductMakers" FromRole="UsersPM" ToRole="ProductMakers" />
+  </EntityType>
+  <Association Name="FK_Answer_Appeal">
+    <End Role="Appeal" Type="Self.Appeal" Multiplicity="1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appeal">
+        <PropertyRef Name="id_Appeal" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Appeal_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appeal_TypeAppeal">
+    <End Role="TypeAppeal" Type="Self.TypeAppeal" Multiplicity="1" />
+    <End Role="Appeal" Type="Self.Appeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeAppeal">
+        <PropertyRef Name="id_TypeAppeal" />
+      </Principal>
+      <Dependent Role="Appeal">
+        <PropertyRef Name="TypeAppeal_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BonusBalance_Balances">
+    <End Role="Balances" Type="Self.Balances" Multiplicity="1" />
+    <End Role="BonusBalance" Type="Self.BonusBalance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Balances">
+        <PropertyRef Name="id_balance" />
+      </Principal>
+      <Dependent Role="BonusBalance">
+        <PropertyRef Name="Balance_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersProduct_Ordsers">
+    <End Role="Ordsers" Type="Self.Ordsers" Multiplicity="1" />
+    <End Role="OrdersProduct" Type="Self.OrdersProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ordsers">
+        <PropertyRef Name="Id_Order" />
+      </Principal>
+      <Dependent Role="OrdersProduct">
+        <PropertyRef Name="Orders_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersProduct_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="OrdersProduct" Type="Self.OrdersProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id_prod" />
+      </Principal>
+      <Dependent Role="OrdersProduct">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersProduct_StatusOP">
+    <End Role="StatusOP" Type="Self.StatusOP" Multiplicity="1" />
+    <End Role="OrdersProduct" Type="Self.OrdersProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusOP">
+        <PropertyRef Name="id_op" />
+      </Principal>
+      <Dependent Role="OrdersProduct">
+        <PropertyRef Name="StatusOP_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ordsers_StatusOrder">
+    <End Role="StatusOrder" Type="Self.StatusOrder" Multiplicity="1" />
+    <End Role="Ordsers" Type="Self.Ordsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusOrder">
+        <PropertyRef Name="id_statusOrder" />
+      </Principal>
+      <Dependent Role="Ordsers">
+        <PropertyRef Name="StatusOrder_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DeliviEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Answer" EntityType="Self.Answer" />
+    <EntitySet Name="Appeal" EntityType="Self.Appeal" />
+    <EntitySet Name="Balances" EntityType="Self.Balances" />
+    <EntitySet Name="BonusBalance" EntityType="Self.BonusBalance" />
+    <EntitySet Name="OrdersProduct" EntityType="Self.OrdersProduct" />
+    <EntitySet Name="Ordsers" EntityType="Self.Ordsers" />
+    <EntitySet Name="Products" EntityType="Self.Products" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="StatusOP" EntityType="Self.StatusOP" />
+    <EntitySet Name="StatusOrder" EntityType="Self.StatusOrder" />
+    <EntitySet Name="TypeAppeal" EntityType="Self.TypeAppeal" />
+    <EntitySet Name="UsersPM" EntityType="Self.UsersPM" />
+    <AssociationSet Name="FK_Answer_Appeal" Association="Self.FK_Answer_Appeal">
+      <End Role="Appeal" EntitySet="Appeal" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appeal_TypeAppeal" Association="Self.FK_Appeal_TypeAppeal">
+      <End Role="TypeAppeal" EntitySet="TypeAppeal" />
+      <End Role="Appeal" EntitySet="Appeal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BonusBalance_Balances" Association="Self.FK_BonusBalance_Balances">
+      <End Role="Balances" EntitySet="Balances" />
+      <End Role="BonusBalance" EntitySet="BonusBalance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersProduct_Ordsers" Association="Self.FK_OrdersProduct_Ordsers">
+      <End Role="Ordsers" EntitySet="Ordsers" />
+      <End Role="OrdersProduct" EntitySet="OrdersProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersProduct_Products" Association="Self.FK_OrdersProduct_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="OrdersProduct" EntitySet="OrdersProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersProduct_StatusOP" Association="Self.FK_OrdersProduct_StatusOP">
+      <End Role="StatusOP" EntitySet="StatusOP" />
+      <End Role="OrdersProduct" EntitySet="OrdersProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ordsers_StatusOrder" Association="Self.FK_Ordsers_StatusOrder">
+      <End Role="StatusOrder" EntitySet="StatusOrder" />
+      <End Role="Ordsers" EntitySet="Ordsers" />
+    </AssociationSet>
+    <EntitySet Name="SplashText" EntityType="DeliviModel.SplashText" />
+    <EntitySet Name="Users" EntityType="DeliviModel.Users" />
+    <AssociationSet Name="FK_Answer_Users" Association="DeliviModel.FK_Answer_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appeal_Users" Association="DeliviModel.FK_Appeal_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Appeal" EntitySet="Appeal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Balances_Users" Association="DeliviModel.FK_Balances_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Balances" EntitySet="Balances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ordsers_Users" Association="DeliviModel.FK_Ordsers_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Ordsers" EntitySet="Ordsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="DeliviModel.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersPM_Users" Association="DeliviModel.FK_UsersPM_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UsersPM" EntitySet="UsersPM" />
+    </AssociationSet>
+    <EntitySet Name="Category" EntityType="DeliviModel.Category" />
+    <AssociationSet Name="FK_Products_Category" Association="DeliviModel.FK_Products_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <EntitySet Name="ProductMakers" EntityType="DeliviModel.ProductMakers" />
+    <AssociationSet Name="FK_Products_ProductMakers" Association="DeliviModel.FK_Products_ProductMakers">
+      <End Role="ProductMakers" EntitySet="ProductMakers" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersPM_ProductMakers" Association="DeliviModel.FK_UsersPM_ProductMakers">
+      <End Role="ProductMakers" EntitySet="ProductMakers" />
+      <End Role="UsersPM" EntitySet="UsersPM" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="SplashText">
+    <Key>
+      <PropertyRef Name="Id_Splah" />
+    </Key>
+    <Property Name="Id_Splah" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id_User" />
+    </Key>
+    <Property Name="id_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhotoUser" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="DateRegist" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BirthData" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Role_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Answer" Relationship="DeliviModel.FK_Answer_Users" FromRole="Users" ToRole="Answer" />
+    <NavigationProperty Name="Appeal" Relationship="DeliviModel.FK_Appeal_Users" FromRole="Users" ToRole="Appeal" />
+    <NavigationProperty Name="Balances" Relationship="DeliviModel.FK_Balances_Users" FromRole="Users" ToRole="Balances" />
+    <NavigationProperty Name="Ordsers" Relationship="DeliviModel.FK_Ordsers_Users" FromRole="Users" ToRole="Ordsers" />
+    <NavigationProperty Name="Roles" Relationship="DeliviModel.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+    <NavigationProperty Name="UsersPM" Relationship="DeliviModel.FK_UsersPM_Users" FromRole="Users" ToRole="UsersPM" />
+  </EntityType>
+  <Association Name="FK_Answer_Users">
+    <End Type="DeliviModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="DeliviModel.Answer" Role="Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_User" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appeal_Users">
+    <End Type="DeliviModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="DeliviModel.Appeal" Role="Appeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_User" />
+      </Principal>
+      <Dependent Role="Appeal">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Balances_Users">
+    <End Type="DeliviModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="DeliviModel.Balances" Role="Balances" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_User" />
+      </Principal>
+      <Dependent Role="Balances">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ordsers_Users">
+    <End Type="DeliviModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="DeliviModel.Ordsers" Role="Ordsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_User" />
+      </Principal>
+      <Dependent Role="Ordsers">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Type="DeliviModel.Roles" Role="Roles" Multiplicity="1" />
+    <End Type="DeliviModel.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="id_Role" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersPM_Users">
+    <End Type="DeliviModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="DeliviModel.UsersPM" Role="UsersPM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_User" />
+      </Principal>
+      <Dependent Role="UsersPM">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="id_category" />
+    </Key>
+    <Property Name="id_category" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Products" Relationship="DeliviModel.FK_Products_Category" FromRole="Category" ToRole="Products" />
+  </EntityType>
+  <Association Name="FK_Products_Category">
+    <End Type="DeliviModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="DeliviModel.Products" Role="Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="id_category" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="Category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ProductMakers">
+    <Key>
+      <PropertyRef Name="id_ProductMakers" />
+    </Key>
+    <Property Name="id_ProductMakers" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Info" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TMe" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Products" Relationship="DeliviModel.FK_Products_ProductMakers" FromRole="ProductMakers" ToRole="Products" />
+    <NavigationProperty Name="UsersPM" Relationship="DeliviModel.FK_UsersPM_ProductMakers" FromRole="ProductMakers" ToRole="UsersPM" />
+  </EntityType>
+  <Association Name="FK_Products_ProductMakers">
+    <End Type="DeliviModel.ProductMakers" Role="ProductMakers" Multiplicity="1" />
+    <End Type="DeliviModel.Products" Role="Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductMakers">
+        <PropertyRef Name="id_ProductMakers" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="ProductMaket_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersPM_ProductMakers">
+    <End Type="DeliviModel.ProductMakers" Role="ProductMakers" Multiplicity="1" />
+    <End Type="DeliviModel.UsersPM" Role="UsersPM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductMakers">
+        <PropertyRef Name="id_ProductMakers" />
+      </Principal>
+      <Dependent Role="UsersPM">
+        <PropertyRef Name="ProductMaker_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

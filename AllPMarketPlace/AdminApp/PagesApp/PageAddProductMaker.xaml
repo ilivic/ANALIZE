@@ -1,0 +1,30 @@
+﻿<Page x:Class="AdminApp.PagesApp.PageAddProductMaker"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AdminApp.PagesApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageAddProductMaker">
+
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Name"/>
+            <TextBox x:Name="TxtName"/>
+            <TextBlock Text="Info"/>
+            <TextBox x:Name="TxtInfo"/>
+            <TextBlock Text="Phone"/>
+            <TextBox x:Name="TxtPhone" TextChanged="TxtPhone_TextChanged" MaxLength="12"/>
+            <TextBlock Text="Emael" />
+            <TextBox x:Name="TxtEmail" TextChanged="TxtEmail_TextChanged"/>
+            <TextBlock Text="Tme"/>
+            <TextBox x:Name="TxtTMe"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Select" VerticalAlignment="Center" Click="Button_Click"/>
+                <Image x:Name="ImaProductMaker" Width="150" Height="150"/>
+            </StackPanel>
+            <Button Content="Add" Background="Orange" Click="Button_Click_1"/>
+        </StackPanel>
+    </Grid>
+</Page>
