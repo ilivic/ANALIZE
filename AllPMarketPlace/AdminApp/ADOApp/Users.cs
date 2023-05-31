@@ -17,11 +17,11 @@ namespace AdminApp.ADOApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users()
         {
-            this.Answer = new HashSet<Answer>();
             this.Appeal = new HashSet<Appeal>();
             this.Balances = new HashSet<Balances>();
             this.Ordsers = new HashSet<Ordsers>();
             this.UsersPM = new HashSet<UsersPM>();
+            this.Answer = new HashSet<Answer>();
         }
     
         public int id_User { get; set; }
@@ -36,8 +36,6 @@ namespace AdminApp.ADOApp
         public int Role_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Answer> Answer { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appeal> Appeal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Balances> Balances { get; set; }
@@ -46,5 +44,7 @@ namespace AdminApp.ADOApp
         public virtual Roles Roles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersPM> UsersPM { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Answer> Answer { get; set; }
     }
 }

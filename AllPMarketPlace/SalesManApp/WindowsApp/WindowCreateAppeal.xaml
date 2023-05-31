@@ -1,0 +1,16 @@
+﻿<Window x:Class="SalesManApp.WindowsApp.WindowCreateAppeal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesManApp.WindowsApp"
+        mc:Ignorable="d"
+        Height="450" WindowStyle="None" WindowStartupLocation="CenterScreen" Width="400">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBox x:Name="TxtText"/>
+            <Button Content="Send" Click="Button_Click"/>
+            <Button Content="Revers" Click="Button_Click_1"/>
+        </StackPanel>
+    </Grid>
+</Window>

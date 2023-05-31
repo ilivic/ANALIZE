@@ -1,0 +1,35 @@
+﻿<Page x:Class="SalesManApp.PagesApp.PageAppeals.PagesAppealS"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SalesManApp.PagesApp.PageAppeals"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PagesAppealS">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding ListAppeal}" Name="ListAppeall" SelectionChanged="ListView_SelectionChanged" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding TypeAppeal.Title}"/>
+                        <TextBlock Text="{Binding DataCreate}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Row="1">
+            <Button Content="Create New Appeal" Click="Button_Click"/>
+        </StackPanel>
+        <Frame x:Name="MainAnswerFrame" Grid.Column="1"/>
+    </Grid>
+</Page>

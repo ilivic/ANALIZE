@@ -35,8 +35,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -49,21 +67,111 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="PagesApp\PageDaraRegistUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesApp\PageLivesUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesApp\PageMainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindwosApp\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="ADOApp\Answer.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\Appeal.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\Balances.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\BonusBalance.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\Category.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\ModelAnalyst.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAnalyst.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\ModelAnalyst.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\ModelAnalyst.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAnalyst.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\OrdersProduct.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\Ordsers.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\ProductMakers.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\Products.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\Roles.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\SplashText.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\StatusOP.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\StatusOrder.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\sysdiagrams.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\TypeAppeal.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\Users.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOApp\UsersPM.cs">
+      <DependentUpon>ModelAnalyst.tt</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="ClassApp\ClassAllMethod.cs" />
+    <Compile Include="ClassApp\ClassCast.cs" />
+    <Compile Include="PagesApp\PageDaraRegistUser.xaml.cs">
+      <DependentUpon>PageDaraRegistUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesApp\PageLivesUsers.xaml.cs">
+      <DependentUpon>PageLivesUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesApp\PageMainMenu.xaml.cs">
+      <DependentUpon>PageMainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindwosApp\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -86,6 +194,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="ADOApp\ModelAnalyst.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelAnalyst.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ADOApp\ModelAnalyst.edmx.diagram">
+      <DependentUpon>ModelAnalyst.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,5 +210,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ADOApp\ModelAnalyst.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelAnalyst.Context.cs</LastGenOutput>
+      <DependentUpon>ModelAnalyst.edmx</DependentUpon>
+    </Content>
+    <Content Include="ADOApp\ModelAnalyst.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelAnalyst.edmx</DependentUpon>
+      <LastGenOutput>ModelAnalyst.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

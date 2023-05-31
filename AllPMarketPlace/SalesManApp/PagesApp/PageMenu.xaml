@@ -26,9 +26,9 @@
                 <Button Content="Добавить товар" Background="Pink" Margin="5" Padding="5"/>
                 <Button Content="Добавить галерею" Background="Pink" Margin="5" Padding="5"/>
                 <Button Content="Изменить товара"  Background="Pink" Padding="5" Margin="5"/>
-                <Button Content="поддержка" Background="Pink" Padding="5" Margin="5"/>
-                <Button Content="выйти из аккаунта" Background="Pink" Padding="5" Margin="5" />
-                <Button Content="выход" Background="Pink" Padding="5" Margin="5"/>
+                <Button Content="поддержка" Click="Button_Click_2" Background="Pink" Padding="5" Margin="5"/>
+                <Button Content="выйти из аккаунта" Click="Button_Click_1" Background="Pink" Padding="5" Margin="5" />
+                <Button Content="выход" Click="Button_Click" Background="Pink" Padding="5" Margin="5"/>
             </StackPanel>
         </Border>
         <Frame Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2" x:Name="MainNaviFarame"/>

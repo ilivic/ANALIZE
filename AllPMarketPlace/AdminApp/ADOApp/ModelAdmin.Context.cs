@@ -25,7 +25,6 @@ namespace AdminApp.ADOApp
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Answer> Answer { get; set; }
         public virtual DbSet<Appeal> Appeal { get; set; }
         public virtual DbSet<Balances> Balances { get; set; }
         public virtual DbSet<BonusBalance> BonusBalance { get; set; }
@@ -41,5 +40,6 @@ namespace AdminApp.ADOApp
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<ProductMakers> ProductMakers { get; set; }
+        public virtual DbSet<Answer> Answer { get; set; }
     }
 }

@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="id_Answer" />
     </Key>
-    <Property Name="id_Answer" Type="int" Nullable="false" />
+    <Property Name="id_Answer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Appeal_id" Type="int" Nullable="false" />
     <Property Name="Text" Type="text" Nullable="false" />
     <Property Name="DateCreate" Type="datetime" Nullable="false" />

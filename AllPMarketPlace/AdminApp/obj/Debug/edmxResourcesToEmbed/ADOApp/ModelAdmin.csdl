@@ -1,17 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DeliviModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Answer">
-    <Key>
-      <PropertyRef Name="id_Answer" />
-    </Key>
-    <Property Name="id_Answer" Type="Int32" Nullable="false" />
-    <Property Name="Appeal_id" Type="Int32" Nullable="false" />
-    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="User_id" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Appeal" Relationship="Self.FK_Answer_Appeal" FromRole="Answer" ToRole="Appeal" />
-    <NavigationProperty Name="Users" Relationship="DeliviModel.FK_Answer_Users" FromRole="Answer" ToRole="Users" />
-  </EntityType>
   <EntityType Name="Appeal">
     <Key>
       <PropertyRef Name="id_Appeal" />
@@ -22,9 +10,9 @@
     <Property Name="DataCreate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="DateClose" Type="DateTime" Precision="3" />
     <Property Name="User_id" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Answer" Relationship="Self.FK_Answer_Appeal" FromRole="Appeal" ToRole="Answer" />
     <NavigationProperty Name="TypeAppeal" Relationship="Self.FK_Appeal_TypeAppeal" FromRole="Appeal" ToRole="TypeAppeal" />
     <NavigationProperty Name="Users" Relationship="DeliviModel.FK_Appeal_Users" FromRole="Appeal" ToRole="Users" />
+    <NavigationProperty Name="Answer" Relationship="DeliviModel.FK_Answer_Appeal" FromRole="Appeal" ToRole="Answer" />
   </EntityType>
   <EntityType Name="Balances">
     <Key>
@@ -129,18 +117,6 @@
     <NavigationProperty Name="Users" Relationship="DeliviModel.FK_UsersPM_Users" FromRole="UsersPM" ToRole="Users" />
     <NavigationProperty Name="ProductMakers" Relationship="DeliviModel.FK_UsersPM_ProductMakers" FromRole="UsersPM" ToRole="ProductMakers" />
   </EntityType>
-  <Association Name="FK_Answer_Appeal">
-    <End Role="Appeal" Type="Self.Appeal" Multiplicity="1" />
-    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Appeal">
-        <PropertyRef Name="id_Appeal" />
-      </Principal>
-      <Dependent Role="Answer">
-        <PropertyRef Name="Appeal_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Appeal_TypeAppeal">
     <End Role="TypeAppeal" Type="Self.TypeAppeal" Multiplicity="1" />
     <End Role="Appeal" Type="Self.Appeal" Multiplicity="*" />
@@ -214,7 +190,6 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="DeliviEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Answer" EntityType="Self.Answer" />
     <EntitySet Name="Appeal" EntityType="Self.Appeal" />
     <EntitySet Name="Balances" EntityType="Self.Balances" />
     <EntitySet Name="BonusBalance" EntityType="Self.BonusBalance" />
@@ -226,10 +201,6 @@
     <EntitySet Name="StatusOrder" EntityType="Self.StatusOrder" />
     <EntitySet Name="TypeAppeal" EntityType="Self.TypeAppeal" />
     <EntitySet Name="UsersPM" EntityType="Self.UsersPM" />
-    <AssociationSet Name="FK_Answer_Appeal" Association="Self.FK_Answer_Appeal">
-      <End Role="Appeal" EntitySet="Appeal" />
-      <End Role="Answer" EntitySet="Answer" />
-    </AssociationSet>
     <AssociationSet Name="FK_Appeal_TypeAppeal" Association="Self.FK_Appeal_TypeAppeal">
       <End Role="TypeAppeal" EntitySet="TypeAppeal" />
       <End Role="Appeal" EntitySet="Appeal" />
@@ -256,10 +227,6 @@
     </AssociationSet>
     <EntitySet Name="SplashText" EntityType="DeliviModel.SplashText" />
     <EntitySet Name="Users" EntityType="DeliviModel.Users" />
-    <AssociationSet Name="FK_Answer_Users" Association="DeliviModel.FK_Answer_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Answer" EntitySet="Answer" />
-    </AssociationSet>
     <AssociationSet Name="FK_Appeal_Users" Association="DeliviModel.FK_Appeal_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="Appeal" EntitySet="Appeal" />
@@ -294,6 +261,15 @@
       <End Role="ProductMakers" EntitySet="ProductMakers" />
       <End Role="UsersPM" EntitySet="UsersPM" />
     </AssociationSet>
+    <EntitySet Name="Answer" EntityType="DeliviModel.Answer" />
+    <AssociationSet Name="FK_Answer_Appeal" Association="DeliviModel.FK_Answer_Appeal">
+      <End Role="Appeal" EntitySet="Appeal" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Users" Association="DeliviModel.FK_Answer_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="SplashText">
     <Key>
@@ -316,25 +292,13 @@
     <Property Name="DateRegist" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="BirthData" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Role_id" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Answer" Relationship="DeliviModel.FK_Answer_Users" FromRole="Users" ToRole="Answer" />
     <NavigationProperty Name="Appeal" Relationship="DeliviModel.FK_Appeal_Users" FromRole="Users" ToRole="Appeal" />
     <NavigationProperty Name="Balances" Relationship="DeliviModel.FK_Balances_Users" FromRole="Users" ToRole="Balances" />
     <NavigationProperty Name="Ordsers" Relationship="DeliviModel.FK_Ordsers_Users" FromRole="Users" ToRole="Ordsers" />
     <NavigationProperty Name="Roles" Relationship="DeliviModel.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
     <NavigationProperty Name="UsersPM" Relationship="DeliviModel.FK_UsersPM_Users" FromRole="Users" ToRole="UsersPM" />
+    <NavigationProperty Name="Answer" Relationship="DeliviModel.FK_Answer_Users" FromRole="Users" ToRole="Answer" />
   </EntityType>
-  <Association Name="FK_Answer_Users">
-    <End Type="DeliviModel.Users" Role="Users" Multiplicity="1" />
-    <End Type="DeliviModel.Answer" Role="Answer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="id_User" />
-      </Principal>
-      <Dependent Role="Answer">
-        <PropertyRef Name="User_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Appeal_Users">
     <End Type="DeliviModel.Users" Role="Users" Multiplicity="1" />
     <End Type="DeliviModel.Appeal" Role="Appeal" Multiplicity="*" />
@@ -451,6 +415,42 @@
       </Principal>
       <Dependent Role="UsersPM">
         <PropertyRef Name="ProductMaker_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="id_Answer" />
+    </Key>
+    <Property Name="id_Answer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Appeal_id" Type="Int32" Nullable="false" />
+    <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="User_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Appeal" Relationship="DeliviModel.FK_Answer_Appeal" FromRole="Answer" ToRole="Appeal" />
+    <NavigationProperty Name="Users" Relationship="DeliviModel.FK_Answer_Users" FromRole="Answer" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK_Answer_Appeal">
+    <End Type="DeliviModel.Appeal" Role="Appeal" Multiplicity="1" />
+    <End Type="DeliviModel.Answer" Role="Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appeal">
+        <PropertyRef Name="id_Appeal" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Appeal_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Users">
+    <End Type="DeliviModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="DeliviModel.Answer" Role="Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_User" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="User_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

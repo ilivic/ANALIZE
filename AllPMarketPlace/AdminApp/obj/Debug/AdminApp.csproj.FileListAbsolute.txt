@@ -39,3 +39,4 @@ C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\AdminApp\obj\D
 C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\AdminApp\obj\Debug\PagesApp\PageAddProductMaker.baml
 C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\AdminApp\obj\Debug\PagesApp\PageEditBlock.g.cs
 C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\AdminApp\obj\Debug\PagesApp\PageEditBlock.baml
+C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\AdminApp\bin\Debug\ru\EntityFramework.SqlServer.resources.dll

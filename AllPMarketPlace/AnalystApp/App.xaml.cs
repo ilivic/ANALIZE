@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using AnalystApp.ADOApp;
 
 namespace AnalystApp
 {
@@ -13,5 +14,6 @@ namespace AnalystApp
     /// </summary>
     public partial class App : Application
     {
+        public static DeliviEntities Connection = new DeliviEntities();
     }
 }

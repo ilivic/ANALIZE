@@ -5,8 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="3a2948873b104a37862252227ae2231e" Name="Diagram1">
-        <EntityTypeShape EntityType="DeliviModel.Answer" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="DeliviModel.Appeal" Width="1.5" PointX="8.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeliviModel.Appeal" Width="1.5" PointX="9" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DeliviModel.Balances" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DeliviModel.BonusBalance" Width="1.5" PointX="7.5" PointY="15.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DeliviModel.OrdersProduct" Width="1.5" PointX="7.5" PointY="5" IsExpanded="true" />
@@ -17,7 +16,6 @@
         <EntityTypeShape EntityType="DeliviModel.StatusOrder" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DeliviModel.TypeAppeal" Width="1.5" PointX="6" PointY="21.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DeliviModel.UsersPM" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
-        <AssociationConnector Association="DeliviModel.FK_Answer_Appeal" ManuallyRouted="false" />
         <AssociationConnector Association="DeliviModel.FK_Appeal_TypeAppeal" ManuallyRouted="false" />
         <AssociationConnector Association="DeliviModel.FK_BonusBalance_Balances" ManuallyRouted="false" />
         <AssociationConnector Association="DeliviModel.FK_OrdersProduct_Ordsers" ManuallyRouted="false" />
@@ -26,7 +24,6 @@
         <AssociationConnector Association="DeliviModel.FK_Ordsers_StatusOrder" ManuallyRouted="false" />
         <EntityTypeShape EntityType="DeliviModel.SplashText" Width="1.5" PointX="7.375" PointY="0.75" />
         <EntityTypeShape EntityType="DeliviModel.Users" Width="1.5" PointX="3" PointY="8.125" />
-        <AssociationConnector Association="DeliviModel.FK_Answer_Users" />
         <AssociationConnector Association="DeliviModel.FK_Appeal_Users" />
         <AssociationConnector Association="DeliviModel.FK_Balances_Users" />
         <AssociationConnector Association="DeliviModel.FK_Ordsers_Users" />
@@ -37,6 +34,9 @@
         <EntityTypeShape EntityType="DeliviModel.ProductMakers" Width="1.5" PointX="0.75" PointY="5.125" />
         <AssociationConnector Association="DeliviModel.FK_Products_ProductMakers" />
         <AssociationConnector Association="DeliviModel.FK_UsersPM_ProductMakers" />
+        <EntityTypeShape EntityType="DeliviModel.Answer" Width="1.5" PointX="11.25" PointY="9" />
+        <AssociationConnector Association="DeliviModel.FK_Answer_Appeal" />
+        <AssociationConnector Association="DeliviModel.FK_Answer_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

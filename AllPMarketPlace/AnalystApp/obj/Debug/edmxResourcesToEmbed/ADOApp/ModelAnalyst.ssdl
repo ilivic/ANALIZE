@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище DeliviModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="id_Answer" />
+    </Key>
+    <Property Name="id_Answer" Type="int" Nullable="false" />
+    <Property Name="Appeal_id" Type="int" Nullable="false" />
+    <Property Name="Text" Type="text" Nullable="false" />
+    <Property Name="DateCreate" Type="datetime" Nullable="false" />
+    <Property Name="User_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Appeal">
+    <Key>
+      <PropertyRef Name="id_Appeal" />
+    </Key>
+    <Property Name="id_Appeal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="text" Nullable="false" />
+    <Property Name="TypeAppeal_id" Type="int" Nullable="false" />
+    <Property Name="DataCreate" Type="datetime" Nullable="false" />
+    <Property Name="DateClose" Type="datetime" />
+    <Property Name="User_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Balances">
+    <Key>
+      <PropertyRef Name="id_balance" />
+    </Key>
+    <Property Name="id_balance" Type="int" Nullable="false" />
+    <Property Name="User_id" Type="int" Nullable="false" />
+    <Property Name="Value" Type="money" Nullable="false" />
+    <Property Name="BunusCard" Type="bit" />
+  </EntityType>
+  <EntityType Name="BonusBalance">
+    <Key>
+      <PropertyRef Name="id_BB" />
+    </Key>
+    <Property Name="id_BB" Type="int" Nullable="false" />
+    <Property Name="Balance_id" Type="int" Nullable="false" />
+    <Property Name="Value" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="id_category" />
+    </Key>
+    <Property Name="id_category" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Photo" Type="image" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrdersProduct">
+    <Key>
+      <PropertyRef Name="id_OP" />
+    </Key>
+    <Property Name="id_OP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Product_id" Type="int" Nullable="false" />
+    <Property Name="Orders_id" Type="int" Nullable="false" />
+    <Property Name="StatusOP_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ordsers">
+    <Key>
+      <PropertyRef Name="Id_Order" />
+    </Key>
+    <Property Name="Id_Order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_id" Type="int" Nullable="false" />
+    <Property Name="DateStart" Type="datetime" Nullable="false" />
+    <Property Name="DateClose" Type="datetime" />
+    <Property Name="StatusOrder_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductMakers">
+    <Key>
+      <PropertyRef Name="id_ProductMakers" />
+    </Key>
+    <Property Name="id_ProductMakers" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Info" Type="text" Nullable="false" />
+    <Property Name="Phone" Type="char" MaxLength="12" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TMe" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Photo" Type="image" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id_prod" />
+    </Key>
+    <Property Name="Id_prod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Photo" Type="image" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="ProductMaket_id" Type="int" Nullable="false" />
+    <Property Name="IsBlock" Type="bit" Nullable="false" />
+    <Property Name="Category_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="id_Role" />
+    </Key>
+    <Property Name="id_Role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SplashText">
+    <Key>
+      <PropertyRef Name="Id_Splah" />
+    </Key>
+    <Property Name="Id_Splah" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="text" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StatusOP">
+    <Key>
+      <PropertyRef Name="id_op" />
+    </Key>
+    <Property Name="id_op" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StatusOrder">
+    <Key>
+      <PropertyRef Name="id_statusOrder" />
+    </Key>
+    <Property Name="id_statusOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TypeAppeal">
+    <Key>
+      <PropertyRef Name="id_TypeAppeal" />
+    </Key>
+    <Property Name="id_TypeAppeal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id_User" />
+    </Key>
+    <Property Name="id_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="char" MaxLength="12" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhotoUser" Type="image" Nullable="false" />
+    <Property Name="DateRegist" Type="datetime" Nullable="false" />
+    <Property Name="BirthData" Type="date" Nullable="false" />
+    <Property Name="Role_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsersPM">
+    <Key>
+      <PropertyRef Name="id_userPM" />
+    </Key>
+    <Property Name="id_userPM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_id" Type="int" Nullable="false" />
+    <Property Name="ProductMaker_id" Type="int" Nullable="false" />
+    <Property Name="IsBlock" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Answer_Appeal">
+    <End Role="Appeal" Type="Self.Appeal" Multiplicity="1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appeal">
+        <PropertyRef Name="id_Appeal" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Appeal_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_User" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appeal_TypeAppeal">
+    <End Role="TypeAppeal" Type="Self.TypeAppeal" Multiplicity="1" />
+    <End Role="Appeal" Type="Self.Appeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeAppeal">
+        <PropertyRef Name="id_TypeAppeal" />
+      </Principal>
+      <Dependent Role="Appeal">
+        <PropertyRef Name="TypeAppeal_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appeal_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Appeal" Type="Self.Appeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_User" />
+      </Principal>
+      <Dependent Role="Appeal">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Balances_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Balances" Type="Self.Balances" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_User" />
+      </Principal>
+      <Dependent Role="Balances">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BonusBalance_Balances">
+    <End Role="Balances" Type="Self.Balances" Multiplicity="1" />
+    <End Role="BonusBalance" Type="Self.BonusBalance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Balances">
+        <PropertyRef Name="id_balance" />
+      </Principal>
+      <Dependent Role="BonusBalance">
+        <PropertyRef Name="Balance_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersProduct_Ordsers">
+    <End Role="Ordsers" Type="Self.Ordsers" Multiplicity="1" />
+    <End Role="OrdersProduct" Type="Self.OrdersProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ordsers">
+        <PropertyRef Name="Id_Order" />
+      </Principal>
+      <Dependent Role="OrdersProduct">
+        <PropertyRef Name="Orders_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersProduct_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="OrdersProduct" Type="Self.OrdersProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id_prod" />
+      </Principal>
+      <Dependent Role="OrdersProduct">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersProduct_StatusOP">
+    <End Role="StatusOP" Type="Self.StatusOP" Multiplicity="1" />
+    <End Role="OrdersProduct" Type="Self.OrdersProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusOP">
+        <PropertyRef Name="id_op" />
+      </Principal>
+      <Dependent Role="OrdersProduct">
+        <PropertyRef Name="StatusOP_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ordsers_StatusOrder">
+    <End Role="StatusOrder" Type="Self.StatusOrder" Multiplicity="1" />
+    <End Role="Ordsers" Type="Self.Ordsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusOrder">
+        <PropertyRef Name="id_statusOrder" />
+      </Principal>
+      <Dependent Role="Ordsers">
+        <PropertyRef Name="StatusOrder_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ordsers_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Ordsers" Type="Self.Ordsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_User" />
+      </Principal>
+      <Dependent Role="Ordsers">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="id_category" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="Category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_ProductMakers">
+    <End Role="ProductMakers" Type="Self.ProductMakers" Multiplicity="1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductMakers">
+        <PropertyRef Name="id_ProductMakers" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="ProductMaket_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="id_Role" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersPM_ProductMakers">
+    <End Role="ProductMakers" Type="Self.ProductMakers" Multiplicity="1" />
+    <End Role="UsersPM" Type="Self.UsersPM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductMakers">
+        <PropertyRef Name="id_ProductMakers" />
+      </Principal>
+      <Dependent Role="UsersPM">
+        <PropertyRef Name="ProductMaker_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersPM_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UsersPM" Type="Self.UsersPM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_User" />
+      </Principal>
+      <Dependent Role="UsersPM">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище DeliviModelContainer">
+    <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Appeal" EntityType="Self.Appeal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Balances" EntityType="Self.Balances" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BonusBalance" EntityType="Self.BonusBalance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrdersProduct" EntityType="Self.OrdersProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ordsers" EntityType="Self.Ordsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductMakers" EntityType="Self.ProductMakers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SplashText" EntityType="Self.SplashText" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StatusOP" EntityType="Self.StatusOP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StatusOrder" EntityType="Self.StatusOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeAppeal" EntityType="Self.TypeAppeal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsersPM" EntityType="Self.UsersPM" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Answer_Appeal" Association="Self.FK_Answer_Appeal">
+      <End Role="Appeal" EntitySet="Appeal" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Users" Association="Self.FK_Answer_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appeal_TypeAppeal" Association="Self.FK_Appeal_TypeAppeal">
+      <End Role="TypeAppeal" EntitySet="TypeAppeal" />
+      <End Role="Appeal" EntitySet="Appeal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appeal_Users" Association="Self.FK_Appeal_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Appeal" EntitySet="Appeal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Balances_Users" Association="Self.FK_Balances_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Balances" EntitySet="Balances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BonusBalance_Balances" Association="Self.FK_BonusBalance_Balances">
+      <End Role="Balances" EntitySet="Balances" />
+      <End Role="BonusBalance" EntitySet="BonusBalance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersProduct_Ordsers" Association="Self.FK_OrdersProduct_Ordsers">
+      <End Role="Ordsers" EntitySet="Ordsers" />
+      <End Role="OrdersProduct" EntitySet="OrdersProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersProduct_Products" Association="Self.FK_OrdersProduct_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="OrdersProduct" EntitySet="OrdersProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersProduct_StatusOP" Association="Self.FK_OrdersProduct_StatusOP">
+      <End Role="StatusOP" EntitySet="StatusOP" />
+      <End Role="OrdersProduct" EntitySet="OrdersProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ordsers_StatusOrder" Association="Self.FK_Ordsers_StatusOrder">
+      <End Role="StatusOrder" EntitySet="StatusOrder" />
+      <End Role="Ordsers" EntitySet="Ordsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ordsers_Users" Association="Self.FK_Ordsers_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Ordsers" EntitySet="Ordsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_ProductMakers" Association="Self.FK_Products_ProductMakers">
+      <End Role="ProductMakers" EntitySet="ProductMakers" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersPM_ProductMakers" Association="Self.FK_UsersPM_ProductMakers">
+      <End Role="ProductMakers" EntitySet="ProductMakers" />
+      <End Role="UsersPM" EntitySet="UsersPM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersPM_Users" Association="Self.FK_UsersPM_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UsersPM" EntitySet="UsersPM" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

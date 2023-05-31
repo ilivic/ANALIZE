@@ -11,7 +11,7 @@ namespace SalesManApp.ADOApp
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Appeal
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +19,7 @@ namespace SalesManApp.ADOApp
         {
             this.Answer = new HashSet<Answer>();
         }
-    
+
         public int id_Appeal { get; set; }
         public string Text { get; set; }
         public int TypeAppeal_id { get; set; }

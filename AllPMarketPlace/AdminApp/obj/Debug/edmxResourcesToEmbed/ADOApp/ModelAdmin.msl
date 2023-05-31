@@ -1,17 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище DeliviModelContainer" CdmEntityContainer="DeliviEntities">
-    <EntitySetMapping Name="Answer">
-      <EntityTypeMapping TypeName="DeliviModel.Answer">
-        <MappingFragment StoreEntitySet="Answer">
-          <ScalarProperty Name="id_Answer" ColumnName="id_Answer" />
-          <ScalarProperty Name="Appeal_id" ColumnName="Appeal_id" />
-          <ScalarProperty Name="Text" ColumnName="Text" />
-          <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
-          <ScalarProperty Name="User_id" ColumnName="User_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Appeal">
       <EntityTypeMapping TypeName="DeliviModel.Appeal">
         <MappingFragment StoreEntitySet="Appeal">
@@ -162,6 +151,17 @@
           <ScalarProperty Name="Info" ColumnName="Info" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="id_ProductMakers" ColumnName="id_ProductMakers" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Answer">
+      <EntityTypeMapping TypeName="DeliviModel.Answer">
+        <MappingFragment StoreEntitySet="Answer">
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Appeal_id" ColumnName="Appeal_id" />
+          <ScalarProperty Name="id_Answer" ColumnName="id_Answer" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

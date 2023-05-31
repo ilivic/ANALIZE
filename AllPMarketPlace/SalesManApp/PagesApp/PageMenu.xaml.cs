@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.Pkcs;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SalesManApp.PagesApp;
 
 namespace SalesManApp.PagesApp
 {
@@ -23,6 +25,21 @@ namespace SalesManApp.PagesApp
         public PageMenu()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PageAtho());
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            MainNaviFarame.NavigationService.Navigate(new PageAppeals.PagesAppealS());
         }
     }
 }
