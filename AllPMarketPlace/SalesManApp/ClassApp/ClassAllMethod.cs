@@ -13,6 +13,8 @@ namespace SalesManApp.ClassApp
 {
     public class ClassAllMethod
     {
+        public static Users CorrUser { get; set; }
+        public static ProductMakers CorrPM { get; set; }
         #region MEssage
         public static void MessageNormal(string body)
         {
@@ -24,7 +26,6 @@ namespace SalesManApp.ClassApp
         }
         #endregion
 
-        public static Users CorrUser { get; set; }
         public static bool Authorization(string Login, string Password)
         {
             var corrUser = App.Connection.Users.Where(z => z.Login == Login && z.Password == Password).FirstOrDefault();
@@ -34,6 +35,7 @@ namespace SalesManApp.ClassApp
                 if (corrUser.Role_id == 2 && SelCorr.IsBlock == false)
                 {
                     CorrUser = corrUser;
+                    CorrPM = CorrUser.UsersPM.First().ProductMakers;
                     MessageNormal("Успешная авторизация");
                     return true;
                 }

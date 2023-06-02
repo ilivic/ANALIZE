@@ -36,3 +36,13 @@ C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\SalesManApp\ob
 C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\SalesManApp\obj\Debug\PagesApp\PageAppeals\PageAnswers.baml
 C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\SalesManApp\obj\Debug\PagesApp\PageAppeals\PagesAppealS.baml
 C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\SalesManApp\obj\Debug\WindowsApp\WindowCreateAppeal.baml
+C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\SalesManApp\obj\Debug\PagesApp\PageAddProduct.g.cs
+C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\SalesManApp\obj\Debug\PagesApp\PageAddProduct.baml
+C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\SalesManApp\obj\Debug\PagesApp\PageAddGall.g.cs
+C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\SalesManApp\obj\Debug\PagesApp\PageShowProduct.g.cs
+C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\SalesManApp\obj\Debug\PagesApp\PageAddGall.baml
+C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\SalesManApp\obj\Debug\PagesApp\PageShowProduct.baml
+C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\SalesManApp\obj\Debug\PagesApp\PageAddProductGall.g.cs
+C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\SalesManApp\obj\Debug\PagesApp\PageAddProductGall.baml
+C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\SalesManApp\obj\Debug\PagesApp\PageEditProduct.g.cs
+C:\Users\KOTIK\Desktop\ah, shit, here we go again\AllPMarketPlace\SalesManApp\obj\Debug\PagesApp\PageEditProduct.baml

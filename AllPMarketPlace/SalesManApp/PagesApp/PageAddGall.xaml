@@ -1,0 +1,59 @@
+﻿<Page x:Class="SalesManApp.PagesApp.PageAddGall"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SalesManApp.PagesApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageAddGall">
+
+    <Grid>
+        <StackPanel>
+            <Menu>
+                <Button Content="Up" Padding="10" Click="Button_Click"/>
+                <Button Content="Down" Padding="10" Click="Button_Click_1"/>
+                <TextBox x:Name="TxtSerch" TextChanged="TxtSerch_TextChanged" Width="250"/>
+                <ComboBox x:Name="CMBCate" Width="200" SelectionChanged="CMBCate_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Title}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox x:Name="CMBIsBlock" Width="200" SelectionChanged="CMBIsBlock_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Title}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Menu>
+            <ListView x:Name="ListProd" ItemsSource="{Binding ListProduct}" SelectionChanged="ListProd_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Menu>
+                            <MenuItem>
+                                <MenuItem.Header>
+                                    <StackPanel Background="Transparent" Orientation="Horizontal">
+                                        <Image Source="{Binding Photo}" Width="150" Height="150"/>
+                                        <StackPanel Margin="20">
+                                            <TextBlock Text="{Binding Title}" FontSize="24"/>
+                                            <TextBlock Text="{Binding Category.Title}" FontSize="24"/>
+                                            <TextBlock Text="{Binding Price,StringFormat='{}{0}$'}" FontSize="22"/>
+                                            <TextBlock Text="{Binding IsActivProd,StringFormat=' статус: {0}'}" FontSize="22"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </MenuItem.Header>
+                                <MenuItem Header="изменить значение блокировки" Click="ClEventEditStatus"/>
+                                <MenuItem Header="просмотреть товар" Click="ClEventShowProd"/>
+                                <MenuItem Header="Добавить галерею" Click="ClEventAddGall"/>
+                            </MenuItem>
+                        </Menu>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackPanel>
+    </Grid>
+</Page>

@@ -37,6 +37,8 @@
         <AssociationConnector Association="DeliviModel.FK_UsersPM_ProductMakers" ManuallyRouted="false" />
         <AssociationConnector Association="DeliviModel.FK_Users_Roles" ManuallyRouted="false" />
         <AssociationConnector Association="DeliviModel.FK_UsersPM_Users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DeliviModel.ProductGalls" Width="1.5" PointX="7.5" PointY="20.125" />
+        <AssociationConnector Association="DeliviModel.FK_ProductGalls_Products" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

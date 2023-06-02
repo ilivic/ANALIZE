@@ -7,7 +7,7 @@
     <Property Name="id_Answer" Type="Int32" Nullable="false" />
     <Property Name="Appeal_id" Type="Int32" Nullable="false" />
     <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="User_id" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Appeal" Relationship="Self.FK_Answer_Appeal" FromRole="Answer" ToRole="Appeal" />
     <NavigationProperty Name="Users" Relationship="Self.FK_Answer_Users" FromRole="Answer" ToRole="Users" />
@@ -19,8 +19,8 @@
     <Property Name="id_Appeal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TypeAppeal_id" Type="Int32" Nullable="false" />
-    <Property Name="DataCreate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="DateClose" Type="DateTime" Precision="3" />
+    <Property Name="DataCreate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateClose" Type="DateTime" Precision="0" />
     <Property Name="User_id" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Answer" Relationship="Self.FK_Answer_Appeal" FromRole="Appeal" ToRole="Answer" />
     <NavigationProperty Name="TypeAppeal" Relationship="Self.FK_Appeal_TypeAppeal" FromRole="Appeal" ToRole="TypeAppeal" />
@@ -92,6 +92,7 @@
     <Property Name="TMe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Products" Relationship="Self.FK_Products_ProductMakers" FromRole="ProductMakers" ToRole="Products" />
     <NavigationProperty Name="UsersPM" Relationship="Self.FK_UsersPM_ProductMakers" FromRole="ProductMakers" ToRole="UsersPM" />
+    <Property Name="Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="Products">
     <Key>
@@ -107,6 +108,7 @@
     <NavigationProperty Name="Category" Relationship="Self.FK_Products_Category" FromRole="Products" ToRole="Category" />
     <NavigationProperty Name="OrdersProduct" Relationship="Self.FK_OrdersProduct_Products" FromRole="Products" ToRole="OrdersProduct" />
     <NavigationProperty Name="ProductMakers" Relationship="Self.FK_Products_ProductMakers" FromRole="Products" ToRole="ProductMakers" />
+    <NavigationProperty Name="ProductGalls" Relationship="DeliviModel.FK_ProductGalls_Products" FromRole="Products" ToRole="ProductGalls" />
   </EntityType>
   <EntityType Name="Roles">
     <Key>
@@ -452,5 +454,31 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="UsersPM" EntitySet="UsersPM" />
     </AssociationSet>
+    <EntitySet Name="ProductGalls" EntityType="DeliviModel.ProductGalls" />
+    <AssociationSet Name="FK_ProductGalls_Products" Association="DeliviModel.FK_ProductGalls_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductGalls" EntitySet="ProductGalls" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="ProductGalls">
+    <Key>
+      <PropertyRef Name="id_productGall" />
+    </Key>
+    <Property Name="id_productGall" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="Product_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Products" Relationship="DeliviModel.FK_ProductGalls_Products" FromRole="ProductGalls" ToRole="Products" />
+  </EntityType>
+  <Association Name="FK_ProductGalls_Products">
+    <End Type="DeliviModel.Products" Role="Products" Multiplicity="1" />
+    <End Type="DeliviModel.ProductGalls" Role="ProductGalls" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id_prod" />
+      </Principal>
+      <Dependent Role="ProductGalls">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

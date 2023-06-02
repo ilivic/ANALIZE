@@ -11,13 +11,15 @@ namespace SalesManApp.ADOApp
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.IO;
+
     public partial class Products
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Products()
         {
             this.OrdersProduct = new HashSet<OrdersProduct>();
+            this.ProductGalls = new HashSet<ProductGalls>();
         }
     
         public int Id_prod { get; set; }
@@ -27,10 +29,18 @@ namespace SalesManApp.ADOApp
         public int ProductMaket_id { get; set; }
         public bool IsBlock { get; set; }
         public int Category_id { get; set; }
-    
+        public string IsActivProd 
+        { 
+            get 
+            {
+                return (IsBlock) ? "Заблокирован" : "в продаже";
+            }
+        }
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrdersProduct> OrdersProduct { get; set; }
         public virtual ProductMakers ProductMakers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductGalls> ProductGalls { get; set; }
     }
 }

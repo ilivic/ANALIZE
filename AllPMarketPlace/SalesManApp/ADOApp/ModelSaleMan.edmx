@@ -4,15 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище DeliviModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище DeliviModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Answer">
           <Key>
             <PropertyRef Name="id_Answer" />
           </Key>
-          <Property Name="id_Answer" Type="int" Nullable="false" />
+          <Property Name="id_Answer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Appeal_id" Type="int" Nullable="false" />
           <Property Name="Text" Type="text" Nullable="false" />
-          <Property Name="DateCreate" Type="datetime" Nullable="false" />
+          <Property Name="DateCreate" Type="date" Nullable="false" />
           <Property Name="User_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Appeal">
@@ -22,8 +22,8 @@
           <Property Name="id_Appeal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Text" Type="text" Nullable="false" />
           <Property Name="TypeAppeal_id" Type="int" Nullable="false" />
-          <Property Name="DataCreate" Type="datetime" Nullable="false" />
-          <Property Name="DateClose" Type="datetime" />
+          <Property Name="DataCreate" Type="date" Nullable="false" />
+          <Property Name="DateClose" Type="date" />
           <Property Name="User_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Balances">
@@ -70,6 +70,14 @@
           <Property Name="DateClose" Type="datetime" />
           <Property Name="StatusOrder_id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="ProductGalls">
+          <Key>
+            <PropertyRef Name="id_productGall" />
+          </Key>
+          <Property Name="id_productGall" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Photo" Type="image" Nullable="false" />
+          <Property Name="Product_id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="ProductMakers">
           <Key>
             <PropertyRef Name="id_ProductMakers" />
@@ -80,6 +88,7 @@
           <Property Name="Phone" Type="char" MaxLength="12" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TMe" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="image" Nullable="false" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -284,6 +293,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ProductGalls_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="ProductGalls" Type="Self.ProductGalls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id_prod" />
+            </Principal>
+            <Dependent Role="ProductGalls">
+              <PropertyRef Name="Product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Products_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
@@ -352,6 +373,7 @@
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrdersProduct" EntityType="Self.OrdersProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ordsers" EntityType="Self.Ordsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductGalls" EntityType="Self.ProductGalls" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductMakers" EntityType="Self.ProductMakers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
@@ -405,6 +427,10 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Ordsers" EntitySet="Ordsers" />
           </AssociationSet>
+          <AssociationSet Name="FK_ProductGalls_Products" Association="Self.FK_ProductGalls_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductGalls" EntitySet="ProductGalls" />
+          </AssociationSet>
           <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="Products" EntitySet="Products" />
@@ -426,8 +452,7 @@
             <End Role="UsersPM" EntitySet="UsersPM" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DeliviModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -438,7 +463,7 @@
           <Property Name="id_Answer" Type="Int32" Nullable="false" />
           <Property Name="Appeal_id" Type="Int32" Nullable="false" />
           <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="User_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Appeal" Relationship="Self.FK_Answer_Appeal" FromRole="Answer" ToRole="Appeal" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Answer_Users" FromRole="Answer" ToRole="Users" />
@@ -450,8 +475,8 @@
           <Property Name="id_Appeal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TypeAppeal_id" Type="Int32" Nullable="false" />
-          <Property Name="DataCreate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DateClose" Type="DateTime" Precision="3" />
+          <Property Name="DataCreate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateClose" Type="DateTime" Precision="0" />
           <Property Name="User_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Answer" Relationship="Self.FK_Answer_Appeal" FromRole="Appeal" ToRole="Answer" />
           <NavigationProperty Name="TypeAppeal" Relationship="Self.FK_Appeal_TypeAppeal" FromRole="Appeal" ToRole="TypeAppeal" />
@@ -523,6 +548,7 @@
           <Property Name="TMe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_ProductMakers" FromRole="ProductMakers" ToRole="Products" />
           <NavigationProperty Name="UsersPM" Relationship="Self.FK_UsersPM_ProductMakers" FromRole="ProductMakers" ToRole="UsersPM" />
+          <Property Name="Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -538,6 +564,7 @@
           <NavigationProperty Name="Category" Relationship="Self.FK_Products_Category" FromRole="Products" ToRole="Category" />
           <NavigationProperty Name="OrdersProduct" Relationship="Self.FK_OrdersProduct_Products" FromRole="Products" ToRole="OrdersProduct" />
           <NavigationProperty Name="ProductMakers" Relationship="Self.FK_Products_ProductMakers" FromRole="Products" ToRole="ProductMakers" />
+          <NavigationProperty Name="ProductGalls" Relationship="DeliviModel.FK_ProductGalls_Products" FromRole="Products" ToRole="ProductGalls" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -883,7 +910,33 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="UsersPM" EntitySet="UsersPM" />
           </AssociationSet>
+          <EntitySet Name="ProductGalls" EntityType="DeliviModel.ProductGalls" />
+          <AssociationSet Name="FK_ProductGalls_Products" Association="DeliviModel.FK_ProductGalls_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductGalls" EntitySet="ProductGalls" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ProductGalls">
+          <Key>
+            <PropertyRef Name="id_productGall" />
+          </Key>
+          <Property Name="id_productGall" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Product_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="DeliviModel.FK_ProductGalls_Products" FromRole="ProductGalls" ToRole="Products" />
+        </EntityType>
+        <Association Name="FK_ProductGalls_Products">
+          <End Type="DeliviModel.Products" Role="Products" Multiplicity="1" />
+          <End Type="DeliviModel.ProductGalls" Role="ProductGalls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id_prod" />
+            </Principal>
+            <Dependent Role="ProductGalls">
+              <PropertyRef Name="Product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -965,6 +1018,7 @@
           <EntitySetMapping Name="ProductMakers">
             <EntityTypeMapping TypeName="DeliviModel.ProductMakers">
               <MappingFragment StoreEntitySet="ProductMakers">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="id_ProductMakers" ColumnName="id_ProductMakers" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Info" ColumnName="Info" />
@@ -1050,6 +1104,15 @@
                 <ScalarProperty Name="User_id" ColumnName="User_id" />
                 <ScalarProperty Name="ProductMaker_id" ColumnName="ProductMaker_id" />
                 <ScalarProperty Name="IsBlock" ColumnName="IsBlock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductGalls">
+            <EntityTypeMapping TypeName="DeliviModel.ProductGalls">
+              <MappingFragment StoreEntitySet="ProductGalls">
+                <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="id_productGall" ColumnName="id_productGall" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

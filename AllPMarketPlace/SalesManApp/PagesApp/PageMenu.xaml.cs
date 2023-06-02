@@ -41,5 +41,15 @@ namespace SalesManApp.PagesApp
         {
             MainNaviFarame.NavigationService.Navigate(new PageAppeals.PagesAppealS());
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            MainNaviFarame.NavigationService.Navigate(new PageAddProduct());
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            MainNaviFarame.NavigationService.Navigate(new PageAddGall());
+        }
     }
 }

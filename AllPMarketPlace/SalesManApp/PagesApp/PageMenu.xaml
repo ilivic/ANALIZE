@@ -23,9 +23,8 @@
         </Grid.RowDefinitions>
         <Border CornerRadius="25" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Background="LightGreen">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Добавить товар" Background="Pink" Margin="5" Padding="5"/>
-                <Button Content="Добавить галерею" Background="Pink" Margin="5" Padding="5"/>
-                <Button Content="Изменить товара"  Background="Pink" Padding="5" Margin="5"/>
+                <Button Content="Добавить товар" Click="Button_Click_3" Background="Pink" Margin="5" Padding="5"/>
+                <Button Content="Изменить товара" Click="Button_Click_4"  Background="Pink" Padding="5" Margin="5"/>
                 <Button Content="поддержка" Click="Button_Click_2" Background="Pink" Padding="5" Margin="5"/>
                 <Button Content="выйти из аккаунта" Click="Button_Click_1" Background="Pink" Padding="5" Margin="5" />
                 <Button Content="выход" Click="Button_Click" Background="Pink" Padding="5" Margin="5"/>

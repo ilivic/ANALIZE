@@ -76,6 +76,7 @@
     <EntitySetMapping Name="ProductMakers">
       <EntityTypeMapping TypeName="DeliviModel.ProductMakers">
         <MappingFragment StoreEntitySet="ProductMakers">
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
           <ScalarProperty Name="id_ProductMakers" ColumnName="id_ProductMakers" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Info" ColumnName="Info" />
@@ -161,6 +162,15 @@
           <ScalarProperty Name="User_id" ColumnName="User_id" />
           <ScalarProperty Name="ProductMaker_id" ColumnName="ProductMaker_id" />
           <ScalarProperty Name="IsBlock" ColumnName="IsBlock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductGalls">
+      <EntityTypeMapping TypeName="DeliviModel.ProductGalls">
+        <MappingFragment StoreEntitySet="ProductGalls">
+          <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="id_productGall" ColumnName="id_productGall" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using AnalystApp.ClassApp;
 using System.Windows.Forms.DataVisualization.Charting;
 using LiveCharts.Wpf.Charts.Base;
+using System.Windows.Forms;
 
 namespace AnalystApp.PagesApp
 {
@@ -38,26 +39,34 @@ namespace AnalystApp.PagesApp
         }
         public void DefRes()
         {
-            var SelectedChartType = (SeriesChartType)CMBTypeChart.SelectedItem;
-            var startDate = DataStart.SelectedDate;
-            var endDate = DataStop.SelectedDate.Value.Date;
-            MainChart.Series.Clear();
-
-
-
-            ///раб
-            foreach (var Index in App.Connection.Users)
+            try
             {
+                var SelectedChartType = (SeriesChartType)CMBTypeChart.SelectedItem;
+                var startDate = DataStart.SelectedDate;
+                var endDate = DataStop.SelectedDate.Value.Date;
+                MainChart.Series.Clear();
 
-                var Seria = MainChart.Series.Add($"{Index.FullName} {Index.id_User}");
-                var ChartData = Index.Appeal.ToList().Where(z => z.DataCreate >= startDate.Value.Date && z.DataCreate.Date <= endDate)
-                        .OrderBy(z => z.DataCreate).GroupBy(z => z.DataCreate)
-                        .ToDictionary(Keys => Keys.Key, value => value.Where(z=>z.User_id == Index.id_User).Count());
 
 
-                Seria.Points.DataBindXY(ChartData.Keys, ChartData.Values);
-                Seria.BorderWidth = 10;
-                Seria.ChartType = SelectedChartType;
+                ///раб
+                foreach (var Index in App.Connection.Users)
+                {
+
+
+                    var Seria = MainChart.Series.Add($"{Index.FullName} {Index.id_User}");
+                    var ChartData = Index.Appeal.ToList().Where(z => z.DataCreate >= startDate.Value.Date && z.DataCreate <= endDate)
+                            .OrderBy(z => z.DataCreate).GroupBy(z => z.DataCreate)
+                            .ToDictionary(Keys => Keys.Key, value => value.Where(z => z.User_id == Index.id_User).Count());
+
+                    
+                    Seria.Points.DataBindXY(ChartData.Keys, ChartData.Values);
+                    Seria.BorderWidth = 10;
+                    Seria.ChartType = SelectedChartType;
+                }
+            }
+            catch
+            {
+                ClassAllMethod.MessageError("Данная диаграмма не может быть построенна для таких данных(");
             }
 
         }

@@ -33,7 +33,7 @@ namespace SalesManApp.WindowsApp
             InitializeComponent();
             SelectionSplah = new List<SplashText>(ClassAllMethod.ListSplashGet());
             timer.Tick += TimerTick;
-            timer.Interval = new TimeSpan(5000);
+            timer.Interval = new TimeSpan(100);
             timer.Start();
             DataSelect();
         }

@@ -41,5 +41,6 @@ namespace SalesManApp.ADOApp
         public virtual DbSet<TypeAppeal> TypeAppeal { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<UsersPM> UsersPM { get; set; }
+        public virtual DbSet<ProductGalls> ProductGalls { get; set; }
     }
 }

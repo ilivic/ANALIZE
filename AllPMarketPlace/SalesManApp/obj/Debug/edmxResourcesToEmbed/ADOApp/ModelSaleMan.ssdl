@@ -4,10 +4,10 @@
     <Key>
       <PropertyRef Name="id_Answer" />
     </Key>
-    <Property Name="id_Answer" Type="int" Nullable="false" />
+    <Property Name="id_Answer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Appeal_id" Type="int" Nullable="false" />
     <Property Name="Text" Type="text" Nullable="false" />
-    <Property Name="DateCreate" Type="datetime" Nullable="false" />
+    <Property Name="DateCreate" Type="date" Nullable="false" />
     <Property Name="User_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Appeal">
@@ -17,8 +17,8 @@
     <Property Name="id_Appeal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Text" Type="text" Nullable="false" />
     <Property Name="TypeAppeal_id" Type="int" Nullable="false" />
-    <Property Name="DataCreate" Type="datetime" Nullable="false" />
-    <Property Name="DateClose" Type="datetime" />
+    <Property Name="DataCreate" Type="date" Nullable="false" />
+    <Property Name="DateClose" Type="date" />
     <Property Name="User_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Balances">
@@ -65,6 +65,14 @@
     <Property Name="DateClose" Type="datetime" />
     <Property Name="StatusOrder_id" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="ProductGalls">
+    <Key>
+      <PropertyRef Name="id_productGall" />
+    </Key>
+    <Property Name="id_productGall" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Photo" Type="image" Nullable="false" />
+    <Property Name="Product_id" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="ProductMakers">
     <Key>
       <PropertyRef Name="id_ProductMakers" />
@@ -75,6 +83,7 @@
     <Property Name="Phone" Type="char" MaxLength="12" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="TMe" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Photo" Type="image" Nullable="false" />
   </EntityType>
   <EntityType Name="Products">
     <Key>
@@ -279,6 +288,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ProductGalls_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="ProductGalls" Type="Self.ProductGalls" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id_prod" />
+      </Principal>
+      <Dependent Role="ProductGalls">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Products_Category">
     <End Role="Category" Type="Self.Category" Multiplicity="1" />
     <End Role="Products" Type="Self.Products" Multiplicity="*" />
@@ -347,6 +368,7 @@
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrdersProduct" EntityType="Self.OrdersProduct" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ordsers" EntityType="Self.Ordsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductGalls" EntityType="Self.ProductGalls" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductMakers" EntityType="Self.ProductMakers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
@@ -399,6 +421,10 @@
     <AssociationSet Name="FK_Ordsers_Users" Association="Self.FK_Ordsers_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="Ordsers" EntitySet="Ordsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductGalls_Products" Association="Self.FK_ProductGalls_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductGalls" EntitySet="ProductGalls" />
     </AssociationSet>
     <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
       <End Role="Category" EntitySet="Category" />

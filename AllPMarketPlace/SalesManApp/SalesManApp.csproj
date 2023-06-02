@@ -64,11 +64,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ADOApp\ProductGalls.cs">
+      <DependentUpon>ModelSaleMan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PagesApp\PageAddGall.xaml.cs">
+      <DependentUpon>PageAddGall.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesApp\PageAddProduct.xaml.cs">
+      <DependentUpon>PageAddProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesApp\PageAddProductGall.xaml.cs">
+      <DependentUpon>PageAddProductGall.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PagesApp\PageAppeals\PageAnswers.xaml.cs">
       <DependentUpon>PageAnswers.xaml</DependentUpon>
     </Compile>
     <Compile Include="PagesApp\PageAppeals\PagesAppealS.xaml.cs">
       <DependentUpon>PagesAppealS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesApp\PageEditProduct.xaml.cs">
+      <DependentUpon>PageEditProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesApp\PageShowProduct.xaml.cs">
+      <DependentUpon>PageShowProduct.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowsApp\WindowCreateAppeal.xaml.cs">
       <DependentUpon>WindowCreateAppeal.xaml</DependentUpon>
@@ -76,6 +94,18 @@
     <Compile Include="WindowsApp\WindowSplash.xaml.cs">
       <DependentUpon>WindowSplash.xaml</DependentUpon>
     </Compile>
+    <Page Include="PagesApp\PageAddGall.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesApp\PageAddProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesApp\PageAddProductGall.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PagesApp\PageAppeals\PageAnswers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -88,11 +118,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PagesApp\PageEditProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PagesApp\PageMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PagesApp\PageReg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesApp\PageShowProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
